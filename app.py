@@ -18,13 +18,11 @@ def weight():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-    '''
-    For rendering results on HTML GUI
-    '''
-    int_features = [float(x) for x in request.form.values()]
+    int_features = [flot(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
-    return render_template('index.html', prediction_text=' {} '.format(prediction))
+    
+    return render_template('index.html', prediction_text='Average shrimp body weight is {} grams'.format(prediction))
 
 
 if __name__ == "__main__":
